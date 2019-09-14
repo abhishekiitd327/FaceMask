@@ -44,8 +44,8 @@ def get_face_mask(im, pts):
 filepath = 'face1.jpeg'
 img = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
 imgcol = cv2.imread(filepath)
-img = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
-imgcol = cv2.resize(imgcol, (0,0), fx=0.5, fy=0.5)
+#img = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
+#imgcol = cv2.resize(imgcol, (0,0), fx=0.5, fy=0.5)
 
 landmarks = stasm.search_single(img)
 #print(f"landmarks = {len(landmarks)}")
@@ -60,6 +60,8 @@ face_mask = get_face_mask(img, landmarks)
 #cv2.imwrite(maskname, face_mask)
 cv2.imshow("mask", face_mask)
 cv2.imshow("imgcol", imgcol)
+cv2.imwrite("face1_landmarks.jpeg", imgcol)
+cv2.imwrite("face1_mask.jpeg", face_mask)
 
 cv2.waitKey()
 cv2.destroyAllWindows()
